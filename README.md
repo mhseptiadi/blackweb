@@ -17,4 +17,5 @@ The big idea of this project is:
 ## Development
 
 - cat requirement.txt | xargs go get
-- go run gin.go
+- go build gin.go
+- ./gin
