@@ -1,7 +1,10 @@
 package main
 
-import "github.com/gin-gonic/gin"
-import "./routes"
+import (
+	"github.com/gin-gonic/gin"
+	"./routes"
+	// "./service"
+)
 
 func main() {
 	r := gin.Default()
@@ -10,6 +13,9 @@ func main() {
 			"message": "pong",
 		})
 	})
-	r.GET("/test", test.Run)
+	r.GET("/test", routes.Run)
+	r.POST("/kafka", routes.Producer)
 	r.Run() // listen and serve on 0.0.0.0:8080
+
+	// service.KafkaConsumer()
 }
