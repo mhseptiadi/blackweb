@@ -2,7 +2,7 @@ package routes
 
 import (
 	"github.com/gin-gonic/gin"
-	"../lib/kafka"
+	"github.com/mhseptiadi/blackweb/lib/kafka"
 )
 
 type QueueContent struct {

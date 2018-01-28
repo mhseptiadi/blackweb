@@ -2,7 +2,8 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"./routes"
+	// "./routes"
+	"github.com/mhseptiadi/blackweb/routes"
 	// "./service"
 )
 
