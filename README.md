@@ -14,8 +14,8 @@ The big idea of this project is:
 - golang
 - couchbase
 
-## Development
+## Install
 
-- cat requirement.txt | xargs go get
-- go build gin.go
-- ./gin
+- go get github.com/mhseptiadi/blackweb 
+- or
+- git clone and makesure you clone inside GOPATH
