@@ -6,31 +6,17 @@ import (
 )
 
 type QueueContent struct {
-    Topic string `json:"topic" binding:"required"`
-    Message string `json:"message" binding:"required"`
+	Topic   string `json:"topic" binding:"required"`
+	Message string `json:"message" binding:"required"`
 }
 
 func Producer(c *gin.Context) {
-	var content QueueContent
-	c.BindJSON(&content)
-
-	status,err := kafka.Produce("127.0.0.1:9092,localhost:9092",content.Topic, content.Message)
-
+	message := kafka.Message{}
+	c.BindJSON(&message)
+	err := kafka.Publish(message)
 	c.JSON(200, gin.H{
-		"topic":    content.Topic,
-		"message":    content.Message,
-		"status":    status,
-		"error":    err,
+		"topic":   message.Topic,
+		"Content": message.Content,
+		"error":   err,
 	})
 }
-
-
-// func Consumer(c *gin.Context) {
-// 	topic := c.DefaultQuery("firstname", "test")
-
-// 	kafka.Consume("127.0.0.1:9092,localhost:9092",topic)
-
-// 	c.JSON(200, gin.H{
-// 		"topic":    topic,
-// 	})
-// }
