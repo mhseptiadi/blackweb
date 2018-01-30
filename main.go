@@ -12,8 +12,9 @@ import (
 )
 
 func main() {
-	go service.KafkaProducer()
-	go service.KafkaConsumer()
+	service.ConfigInit()
+	service.KafkaProducer()
+	service.KafkaConsumer()
 
 	ginChan := make(chan error)
 	go func() {

@@ -2,16 +2,14 @@ package service
 
 import (
 	"log"
-	"strings"
 
 	"github.com/Shopify/sarama"
 	"github.com/mhseptiadi/blackweb/lib/kafka"
+	"github.com/spf13/viper"
 )
 
-var kafkaHost string = "127.0.0.1:9092,localhost:9092"
-
 func KafkaConsumer() {
-	brokers := strings.Split(kafkaHost, ",")
+	brokers := viper.GetStringSlice("kafka.host")
 
 	consumerConfig := sarama.NewConfig()
 	// consumerConfig.Consumer.
@@ -27,11 +25,12 @@ func KafkaConsumer() {
 }
 
 func KafkaProducer() {
+	brokers := viper.GetStringSlice("kafka.host")
+
 	producerConcifg := sarama.NewConfig()
 	producerConcifg.Producer.RequiredAcks = sarama.WaitForAll
 	producerConcifg.Producer.Retry.Max = 10
 	producerConcifg.Producer.Return.Successes = true
-	brokers := strings.Split(kafkaHost, ",")
 	producer, err := sarama.NewSyncProducer(brokers, producerConcifg)
 	if err != nil {
 		log.Printf("failed to create producer: %s", err.Error())
