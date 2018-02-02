@@ -15,6 +15,7 @@ func main() {
 	service.ConfigInit()
 	service.KafkaProducer()
 	service.KafkaConsumer()
+	service.CouchbaseConn()
 
 	ginChan := make(chan error)
 	go func() {

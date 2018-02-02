@@ -12,7 +12,7 @@ The big idea of this project is:
 ## Requirements
 
 - golang
-- couchbase
+- couchbase community (https://github.com/couchbase/docker)
 
 ## Install
 

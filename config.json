@@ -4,5 +4,10 @@
             "127.0.0.1:9092",
             "localhost:9092"
         ]
+    },
+    "couchbase":{
+        "host":[
+            "http://localhost:8091/"
+        ]
     }
 }
